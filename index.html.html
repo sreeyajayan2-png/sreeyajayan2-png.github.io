@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sreeya A.J — Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0A192F;
+    --navy2:#112240;
+    --teal:#64FFDA;
+    --teal2:#38BDF8;
+    --white:#E6F1FF;
+    --muted:#8892A4;
+    --card:#112240;
+    --border:#1E3A5F;
+  }
+  body{background:var(--navy);color:var(--white);font-family:'Inter',sans-serif;line-height:1.7;min-height:100vh}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;background:rgba(10,25,47,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;padding:0 2rem}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;color:var(--teal);letter-spacing:1px}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--muted);font-size:0.875rem;letter-spacing:0.5px;transition:color 0.2s}
+  .nav-links a:hover,.nav-links a.active{color:var(--teal);text-decoration:none}
+
+  /* SECTIONS */
+  section{min-height:100vh;display:flex;align-items:center;padding:100px 2rem 60px}
+  .container{max-width:1100px;margin:0 auto;width:100%}
+
+  /* HERO */
+  #about{background:var(--navy)}
+  .hero-eyebrow{font-size:0.875rem;color:var(--teal);letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem;font-weight:500}
+  .hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;color:#CCD6F6;line-height:1.1;margin-bottom:0.5rem}
+  .hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,4vw,2.8rem);font-weight:600;color:var(--muted);margin-bottom:1.5rem}
+  .hero-title span{color:var(--teal)}
+  .hero-bio{max-width:600px;color:var(--muted);font-size:1rem;margin-bottom:2rem;line-height:1.8}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn-primary{background:transparent;border:1px solid var(--teal);color:var(--teal);padding:0.75rem 1.75rem;border-radius:4px;font-size:0.875rem;cursor:pointer;transition:all 0.2s;letter-spacing:1px;font-family:'Space Grotesk',sans-serif;font-weight:500}
+  .btn-primary:hover{background:rgba(100,255,218,0.08)}
+  .hero-links{display:flex;gap:1.5rem;margin-top:2.5rem}
+  .hero-links a{color:var(--muted);font-size:0.875rem;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s}
+  .hero-links a:hover{color:var(--teal);text-decoration:none}
+
+  /* SKILLS */
+  #skills{background:var(--navy2)}
+  .section-label{font-size:0.75rem;color:var(--teal);letter-spacing:4px;text-transform:uppercase;margin-bottom:0.75rem;font-weight:500}
+  .section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:#CCD6F6;margin-bottom:0.5rem}
+  .section-line{width:60px;height:2px;background:var(--teal);margin-bottom:2.5rem;opacity:0.6}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+  .skill-card{background:var(--navy);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:border-color 0.2s,transform 0.2s}
+  .skill-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+  .skill-cat{font-size:0.75rem;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;font-weight:600}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+  .tag{background:rgba(100,255,218,0.07);border:1px solid rgba(100,255,218,0.2);color:var(--teal);padding:0.3rem 0.75rem;border-radius:3px;font-size:0.8rem;font-family:'Space Grotesk',sans-serif}
+
+  /* EXPERIENCE */
+  #experience{background:var(--navy)}
+  .timeline{position:relative;padding-left:2rem}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+  .timeline-item{position:relative;margin-bottom:2.5rem}
+  .timeline-item::before{content:'';position:absolute;left:-2.4rem;top:6px;width:10px;height:10px;border-radius:50%;background:var(--teal);border:2px solid var(--navy)}
+  .timeline-period{font-size:0.78rem;color:var(--teal);letter-spacing:1px;margin-bottom:0.3rem;font-weight:500}
+  .timeline-role{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;color:#CCD6F6;margin-bottom:0.15rem}
+  .timeline-company{font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem}
+  .timeline-desc{font-size:0.875rem;color:var(--muted);line-height:1.7}
+
+  /* PROJECTS */
+  #projects{background:var(--navy2)}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+  .project-card{background:var(--navy);border:1px solid var(--border);border-radius:8px;padding:1.75rem;display:flex;flex-direction:column;transition:border-color 0.2s,transform 0.2s}
+  .project-card:hover{border-color:var(--teal);transform:translateY(-4px)}
+  .project-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+  .project-icon{color:var(--teal);font-size:1.5rem}
+  .project-links{display:flex;gap:0.75rem}
+  .project-links a{color:var(--muted);font-size:0.85rem;transition:color 0.2s}
+  .project-links a:hover{color:var(--teal);text-decoration:none}
+  .project-name{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;color:#CCD6F6;margin-bottom:0.5rem}
+  .project-desc{font-size:0.875rem;color:var(--muted);line-height:1.7;flex:1;margin-bottom:1.25rem}
+  .project-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+  .ptag{font-size:0.75rem;color:var(--teal2);font-family:'Space Grotesk',sans-serif;font-weight:500}
+  .ptag::before{content:'#'}
+
+  /* CONTACT */
+  #contact{background:var(--navy);min-height:auto;padding:80px 2rem}
+  .contact-inner{max-width:600px}
+  .contact-sub{color:var(--muted);margin-bottom:2rem;font-size:1rem}
+  .contact-links{display:flex;flex-direction:column;gap:1rem}
+  .contact-row{display:flex;align-items:center;gap:0.75rem;color:var(--muted);font-size:0.9rem}
+  .contact-row a{color:#CCD6F6;transition:color 0.2s}
+  .contact-row a:hover{color:var(--teal)}
+  .contact-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+
+  /* FOOTER */
+  footer{background:var(--navy);border-top:1px solid var(--border);text-align:center;padding:1.5rem;font-size:0.8rem;color:var(--muted)}
+
+  /* CERT CHIPS */
+  .certs{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+  .cert{background:rgba(56,189,248,0.07);border:1px solid rgba(56,189,248,0.2);color:var(--teal2);padding:0.3rem 0.8rem;border-radius:3px;font-size:0.78rem;font-family:'Space Grotesk',sans-serif}
+
+  @media(max-width:600px){
+    nav .nav-links{gap:1rem}
+    .hero-name{font-size:2rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">Sreeya A.J</span>
+    <ul class="nav-links">
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="hero-eyebrow">Hello, I'm</p>
+    <h1 class="hero-name">Sreeya A.J</h1>
+    <h2 class="hero-title">Data Analyst <span>&amp; Digital Marketer</span></h2>
+    <p class="hero-bio">
+      M.Sc Data Analytics graduate from St. Joseph's College, Irinjalakuda with a strong foundation in Mathematics. 
+      I turn raw data into clear insights using SQL, Python, Power BI, and Excel — and blend analytics with digital marketing 
+      to drive real business decisions. Currently interning at Knovista Technologies as a Digital Marketing Intern.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects"><button class="btn-primary">View My Work</button></a>
+      <a href="#contact"><button class="btn-primary">Get In Touch</button></a>
+    </div>
+    <div class="hero-links">
+      <a href="https://github.com/sreeyajayan2-png" target="_blank">⌥ GitHub</a>
+      <a href="https://www.linkedin.com/in/sreeya-aj2001" target="_blank">in LinkedIn</a>
+      <a href="mailto:sreeyajayan2001@gmail.com">✉ Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">What I work with</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <p class="skill-cat">Data & Analytics</p>
+        <div class="skill-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">Python</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Seaborn</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-cat">Visualization & BI</p>
+        <div class="skill-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">Dashboard Design</span>
+          <span class="tag">Data Cleaning</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-cat">AI & Machine Learning</p>
+        <div class="skill-tags">
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Mask R-CNN</span>
+          <span class="tag">PointRend</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">Generative AI</span>
+          <span class="tag">PixelLib</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <p class="skill-cat">Digital Marketing & SEO</p>
+        <div class="skill-tags">
+          <span class="tag">SEO Analytics</span>
+          <span class="tag">Digital Marketing</span>
+          <span class="tag">Web Development</span>
+          <span class="tag">Poster Design</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="certs">
+      <span class="cert">AI for Data Analysis</span>
+      <span class="cert">Analyze Data to Answer Questions</span>
+      <span class="cert">Cloud Computing</span>
+      <span class="cert">Foundations: Data, Data, Everywhere</span>
+      <span class="cert">Advanced Data Analytics with AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Where I've worked</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <p class="timeline-period">March 2026 – Present</p>
+        <p class="timeline-role">Digital Marketing Intern</p>
+        <p class="timeline-company">Knovista Technologies Pvt. Ltd. · Ernakulam</p>
+        <p class="timeline-desc">Gaining hands-on experience in digital strategies, SEO, and online marketing campaigns. Applying data analytics to measure and improve campaign performance.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-period">June 2025 – September 2025</p>
+        <p class="timeline-role">AI Data Quality Analyst</p>
+        <p class="timeline-company">Don Bosco Tech Society · Coimbatore</p>
+        <p class="timeline-desc">Ensured quality and accuracy of AI training datasets. Reviewed and validated data to maintain high standards for machine learning pipelines.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-period">January 2025 – April 2025</p>
+        <p class="timeline-role">Data Analyst Intern</p>
+        <p class="timeline-company">MaxEd · Ernakulam, Kerala</p>
+        <p class="timeline-desc">Analysed educational data, built dashboards, and delivered actionable insights to support data-driven decision making.</p>
+      </div>
+
+      <div class="timeline-item">
+        <p class="timeline-period">May 2024 – August 2024</p>
+        <p class="timeline-role">Summer Research Intern</p>
+        <p class="timeline-company">Indian Institute of Information Technology Kottayam</p>
+        <p class="timeline-desc">Conducted research on deep learning models for image segmentation, contributing to the polar bear population estimation study using Mask R-CNN and PointRend-ResNet50.</p>
+      </div>
+
+    </div>
+
+    <div class="section-line" style="margin-top:2.5rem;margin-bottom:1rem"></div>
+    <p class="section-label">Education</p>
+    <div class="timeline" style="margin-top:1.5rem">
+      <div class="timeline-item">
+        <p class="timeline-period">July 2023 – April 2025</p>
+        <p class="timeline-role">M.Sc Data Analytics</p>
+        <p class="timeline-company">St. Joseph's College (Autonomous), Irinjalakkuda</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-period">February 2026</p>
+        <p class="timeline-role">Advanced Data Analytics with AI</p>
+        <p class="timeline-company">HACA Tech School</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-period">June 2019 – April 2022</p>
+        <p class="timeline-role">B.Sc Mathematics</p>
+        <p class="timeline-company">S.N.M. College Maliankara</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Things I've built</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-top">
+          <span class="project-icon">🐻‍❄️</span>
+          <div class="project-links">
+            <a href="https://github.com/sreeyajayan2-png" target="_blank">GitHub ↗</a>
+          </div>
+        </div>
+        <p class="project-name">Polar Bear Population Estimation</p>
+        <p class="project-desc">
+          A comparative deep learning study using Mask R-CNN and PointRend-ResNet50 to detect, segment, and count polar bears in aerial imagery. PointRend-ResNet50 achieved 0.98 precision and 1.00 recall. Published as an IEEE research paper.
+        </p>
+        <div class="project-tags">
+          <span class="ptag">Python</span>
+          <span class="ptag">Deep Learning</span>
+          <span class="ptag">Mask R-CNN</span>
+          <span class="ptag">PointRend</span>
+          <span class="ptag">PixelLib</span>
+          <span class="ptag">OpenCV</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <span class="project-icon">📊</span>
+          <div class="project-links">
+            <a href="https://github.com/sreeyajayan2-png/SEO-Analytics-Dashboard-PowerBI" target="_blank">GitHub ↗</a>
+          </div>
+        </div>
+        <p class="project-name">SEO Analytics Dashboard — Power BI</p>
+        <p class="project-desc">
+          An interactive Power BI dashboard that visualises key SEO metrics including traffic sources, keyword performance, click-through rates, and ranking trends — enabling data-driven SEO strategy decisions.
+        </p>
+        <div class="project-tags">
+          <span class="ptag">Power BI</span>
+          <span class="ptag">SEO Analytics</span>
+          <span class="ptag">Data Visualization</span>
+          <span class="ptag">Dashboard</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">What's next</p>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-line"></div>
+    <div class="contact-inner">
+      <p class="contact-sub">
+        I'm actively looking for data analyst and digital marketing roles. Whether you have an opportunity, a project, or just want to say hello — my inbox is open.
+      </p>
+      <div class="contact-links">
+        <div class="contact-row">
+          <span class="contact-dot"></span>
+          <span>Email:</span>
+          <a href="mailto:sreeyajayan2001@gmail.com">sreeyajayan2001@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-dot"></span>
+          <span>LinkedIn:</span>
+          <a href="https://www.linkedin.com/in/sreeya-aj2001" target="_blank">linkedin.com/in/sreeya-aj2001</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-dot"></span>
+          <span>GitHub:</span>
+          <a href="https://github.com/sreeyajayan2-png" target="_blank">github.com/sreeyajayan2-png</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-dot"></span>
+          <span>Location:</span>
+          <span>Kodungallur, Kerala, India</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; Built by Sreeya A.J · 2026</p>
+</footer>
+
+<script>
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      navLinks.forEach(a => a.classList.remove('active'));
+      const id = entry.target.id;
+      const active = document.querySelector(`.nav-links a[href="#${id}"]`);
+      if(active) active.classList.add('active');
+    }
+  });
+}, {threshold: 0.4});
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
